@@ -1,0 +1,63 @@
+[
+  {
+    "method": "GET",
+    "path": "/health",
+    "status": 200,
+    "response": {
+      "status": "ok"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/orders",
+    "status": 201,
+    "response": {
+      "order_id": 1,
+      "product_id": 2,
+      "quantity": 3,
+      "unit_price": 350,
+      "total_amount": 1050
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/orders/1",
+    "status": 200,
+    "response": {
+      "order_id": 1,
+      "product_id": 2,
+      "quantity": 3,
+      "unit_price": 350,
+      "total_amount": 1050
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/orders",
+    "status": 422,
+    "response": {
+      "detail": [
+        {
+          "type": "greater_than_equal",
+          "loc": [
+            "body",
+            "quantity"
+          ],
+          "msg": "Input should be greater than or equal to 1",
+          "input": 0,
+          "ctx": {
+            "ge": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/orders/2",
+    "status": 404,
+    "response": {
+      "detail": "Order not found"
+    }
+  }
+]
